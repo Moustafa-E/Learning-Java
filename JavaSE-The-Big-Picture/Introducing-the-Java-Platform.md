@@ -1,14 +1,16 @@
 # The Platform
 
-## The JDK
-We can split Java into the 3 parts below. These make up the <span style="color:pink">Java Development Kit (JDK)</span>. This contains all the tools needed to run Java apps. 
+## JDK, JRE, JDE, JVM, JSE-API 
+We can split Java into the 3 basic parts below:
 
 ### 1. Programming Language
 Defines Syntax, keywords file structure, etc.
 ### 2. Runtime Environment
-Where Java code is executed. This abstracts away the code from the underlying hardware, meaning it can run anywhere. 
+Where Java code is executed. The Java Virtual Machine (<span style="color:pink">JVM</span>) and Standard Edition APIs (<span style="color:pink">JSE-API</span>) make up the (<span style="color:pink">JDK</span>) - The Java Development Kit.
+The JVM is responsible for abstracting away Bytecode and turning it into machine code readable by the OS & Hardware it sits in. 
 ### 3. Standard Library
-Collection of code written for us so that we aren't constantly re-inventing the wheel.
+Collection of code written for us so that we aren't constantly re-inventing the wheel. Third party libraries exist too, but they don't come prepackaged with Java. 
+
 ## The Development Cycle
 ```mermaid
 flowchart LR
