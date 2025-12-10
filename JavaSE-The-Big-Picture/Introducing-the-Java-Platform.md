@@ -15,16 +15,17 @@ Collection of code written for us so that we aren't constantly re-inventing the 
 ```mermaid
 flowchart LR
     TPL("Third-Party Libraries (JARs)")
-    SC("Source Code (.java)")
-    C("Compiler")
+    SC("Source Code (Hello.java)")
+    C("Compiler [javac Hello.java]")
     B("Bytecode (.class)")
     JSE("Java SE APIs")
     JVM["Java Virtual Machine"]
     OS["Operating System"]
     HW["Hardware"]
+    Out["Output"]
 
     subgraph S1["Runtime Environment"]
-        direction LR
+        direction TB
         HW
         OS
         subgraph S11["JDK"]
@@ -33,7 +34,8 @@ flowchart LR
             JSE
         end
 
-        S11 --> OS --> HW
+        S11 --> OS
+        HW --> OS --> Out
     end
 
     subgraph S2["Development Environment"]
