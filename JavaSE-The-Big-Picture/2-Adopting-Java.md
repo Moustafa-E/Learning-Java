@@ -33,7 +33,7 @@ Neither our source code nor bytecode, nor the SE APIs we use need to change, mea
 
 This portability becomes a problem only when the intention is to write a program that integrates deeply with the existing architecture. 
 ### Auto Management
-The JVM will efficiently manage memory for us. This includes both the allocation of it and its garbage collection. 
+The JVM will efficiently manage memory for us (unlike C/C++). This includes both the allocation of it and its garbage collection. 
 This allows devs to think about business logic purely without thinking much about memory management. 
 
 Multi threading is also handled for us in the JVM, where code will be scheduled to run in parallel across many CPU cores/threads. 
