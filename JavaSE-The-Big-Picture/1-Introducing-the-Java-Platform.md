@@ -4,14 +4,18 @@
 We can split Java into the 3 basic parts below:
 
 ### 1. Programming Language
+
 Defines Syntax, keywords file structure, etc.
 ### 2. Runtime Environment
+
 Where Java code is executed. The Java Virtual Machine (<span style="color:pink">JVM</span>) and Standard Edition APIs (<span style="color:pink">JSE-API</span>) make up the (<span style="color:pink">JDK</span>) - The Java Development Kit.
 The JVM is responsible for abstracting away Bytecode and turning it into machine code readable by the OS & Hardware it sits in. 
 ### 3. Standard Library
+
 Collection of code written for us so that we aren't constantly re-inventing the wheel. Third party libraries exist too, but they don't come prepackaged with Java. 
 These are mostly a collection of common, repetitive tasks you'd like your program to do. 
 ## The Development Cycle
+
 ```mermaid
 flowchart LR
     TPL("Third-Party Libraries (JARs)")
