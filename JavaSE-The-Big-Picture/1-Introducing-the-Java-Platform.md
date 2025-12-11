@@ -10,7 +10,7 @@ Where Java code is executed. The Java Virtual Machine (<span style="color:pink">
 The JVM is responsible for abstracting away Bytecode and turning it into machine code readable by the OS & Hardware it sits in. 
 ### 3. Standard Library
 Collection of code written for us so that we aren't constantly re-inventing the wheel. Third party libraries exist too, but they don't come prepackaged with Java. 
-
+These are mostly a collection of common, repetitive tasks you'd like your program to do. 
 ## The Development Cycle
 ```mermaid
 flowchart LR
