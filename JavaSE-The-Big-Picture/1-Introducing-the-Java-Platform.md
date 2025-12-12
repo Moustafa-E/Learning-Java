@@ -39,7 +39,7 @@ flowchart LR
         end
 
         S11 --> OS
-        HW --> OS --> Out
+        HW --> OS -->|compiles to| Out
     end
 
     subgraph S2["Development Environment"]
@@ -54,11 +54,9 @@ flowchart LR
             TPL
         end
 
-        SC --- C
+        SC --> C
         C --> S21
     end
 
-%% Dev to Runtime
     S21 --> S11
-
 ```
