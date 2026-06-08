@@ -10,16 +10,15 @@ public class Current extends Account {
     private double odLimit; // overdraft limit
 
     // Constructors
-    public Current(String holder) {
+    public Current(String holder) throws AccountNameException {
         super(holder); // grab the holder field from the parent class, Account()
     }
-    public Current(String holder, double balance) {
+    public Current(String holder, double balance) throws AccountNameException {
         super(holder, balance);
     }
-    public Current(String holder, double balance, double odLimit){
+    public Current(String holder, double balance, double odLimit) throws AccountNameException{
         super(holder, balance);
         setOdLimit(odLimit);
-        System.out.println(toString());
     }
 
     // Getters / Setters
@@ -34,12 +33,16 @@ public class Current extends Account {
 
     // Using the same method signature (name, parameters, return type) as the super class requires @Override. That'll change the behaviour of the compiler to use this def for this subclass.
     @Override
-    public void withdraw(double amount) {
+    public void withdraw(double amount) throws AccountPaymentException {
         if (balance + odLimit >= amount) {
             balance -= amount;
         } else {
-            System.out.println("Overdraft exceeded. Transaction cancelled.");
+            throw new AccountPaymentException("overdraft limit exceeded", amount);
         }
+    }
+    @Override
+    public void deposit(double amount) {
+        balance += amount;
     }
 
     @Override
@@ -58,8 +61,11 @@ public class Current extends Account {
 
     @Override
     public int hashCode() {
+        // groups related data together.
         int result = Objects.hashCode(holder);
         result = 31 * result + Double.hashCode(balance); // We're forming a hashcode based on the field values in the class. 
         return result;
     }
+
+
 }
