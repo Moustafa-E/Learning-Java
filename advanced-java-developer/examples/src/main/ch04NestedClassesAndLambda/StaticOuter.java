@@ -1,4 +1,4 @@
-package main.ch04NestedLambda;
+package main.ch04NestedClassesAndLambda;
 
 public class StaticOuter {
     public static void main(String[] args) {

@@ -1,4 +1,4 @@
-package main.ch04NestedLambda;
+package main.ch04NestedClassesAndLambda;
 
 import javax.swing.*;
 import java.awt.*;
