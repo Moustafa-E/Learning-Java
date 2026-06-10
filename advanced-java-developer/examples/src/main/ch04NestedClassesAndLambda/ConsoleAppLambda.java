@@ -29,7 +29,7 @@ public class ConsoleAppLambda extends JFrame {
         btnPress.addActionListener(e -> txt.setText("You pressed le button"));
         // calls an anonymous member inner class
         btnExit.addActionListener(
-            // ActionListener is an interface but we implemented its methods with an nameless method: a lambda function.
+            // ActionListener is an interface but we implemented its methods with a a lambda function.
             e -> System.exit(0)
             // Full version of this: (ActionEvent e) -> {System.exit(0);}. ActionEvent typing expected by class so can be omitted.
         );
