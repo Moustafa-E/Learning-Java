@@ -1,4 +1,4 @@
-package main.ch00refresher;
+package main.ch04NestedClassesAndLambda.bank;
 
 public abstract class Account {
     // (default) private - same class

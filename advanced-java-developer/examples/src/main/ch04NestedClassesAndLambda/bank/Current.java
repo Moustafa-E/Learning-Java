@@ -1,6 +1,6 @@
 // INHERITANCE
 
-package main.ch00refresher;
+package main.ch04NestedClassesAndLambda.bank;
 
 import java.util.Objects;
 
