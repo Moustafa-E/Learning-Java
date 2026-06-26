@@ -10,6 +10,6 @@ public class Terminal {
         // System.out.println(stream.count()); 
         // ^ trying this again will give an exception because using println() on a stream will terminate it.
         stream = Stream.of("one", "two", "three");
-        System.out.println( stream.max( (s1, s2) -> s1.length() - s2.length()) ); // min() same thing
+        System.out.println( stream.max( (s1, s2) -> s1.length() - s2.length()) ); // min() same syntax
     }
 }

@@ -1,0 +1,200 @@
+Advanced Java
+=============
+
+Github
+	https://github.com/stayahead-training/advanced-java-developer
+
+VM gateway	https://arp.stayahead.com/rgw5/
+Username	OS009128
+Password	DuckLark88
+
+VM allocations:
+Jac 		vc8-8010	
+Chris 		vc8-8011
+Moustafa 	vc8-8012
+Jeffery		vc8-8013
+Carlin 		vc8-8014
+Parjal 		vc8-8015
+Allan 		vc8-8016
+Tudor 		vc8-8017
+Gareth 		vc8-8018
+
+VM username		admin
+VM password		DuckLark88
+
+Timings:
+start		9.30
+breaks		11.00, 15.00 for 15-20 mins
+lunch		12.30-13.30
+finish		4.30-5.00
+
+Refresher:
+Java versions
+	LTS versions of Java are 8, 11, 17, 21 and 25
+	Oracle comitted to a 6 monthly release cycle 
+	The biggest changes are Java 5 (generics) and Java 8 (streams)
+	Java version 1.5 was officially called Java 5
+Java build tools
+	Resolve dependencies between 3rd party Java programs
+	Maven	the most popular Java build tools
+			uses a configuration file called pom.xml (project object model)
+			favours "convention over configuration"
+	Gradle	a competitor to Maven
+	ANT 	Another Neat Tool
+			the original Java build tool
+			a configuration file called build.xml 
+Access modifier visibility
+	private 	in the same class
+	(default)	in the package
+	protected	in the same package and to a sub class in a different package 
+	public 		any class in any package 
+Interfaces
+	Are a type of abstract class 
+	Before Java 8 they could only contain abstract methods
+	A class that implements an interface must implement the abstract methods
+	A class can only extends 1 other class (single inheritance)
+	A class can implement as many interfaces as it likes
+	Can't be instantiated
+	Can have public static final fields
+Interfaces since Java 8
+	Can contain concrete methods if those methods are marked as "default"
+	Can also contain static methods 
+	This was done to add function-based flexibility to the Java API
+	Interfaces are now used to make lambda expressions work
+	Interfaces that back lambda expressions can only have 1 abstract method 
+		protect them with @FunctionalInterface annotation
+
+Nested classes
+	1.	Static nested classes 
+		defined at member level (same as fields and methods)
+		the nesting gives us a namespace we can refer to 
+		can be private 
+		the outer class can access private members of the inner class 
+		sometimes used in thread handling (concurrency)
+		Use - final constant within an enumerated class 
+	
+	2.	Local inner class 
+		defined inside a method 
+		no access modifier 
+		can access members of the outer class 
+		have restrictions on access to local variables
+			these variables must be final or "effectively final"
+	
+	3.	Member inner classes 
+		defined at member level
+		can be named or anonymous
+		can be abstract or final 
+		can extend a different class to their outer class 
+		can access private members of the outer class 
+		can't have static members
+
+Lambda syntax
+	a ->	the method implementation that the arrow points to has an argument called "a"
+	() ->	the method has no arguments
+	(a1,a2,...) ->	the method has multiple arguments
+
+Comparison interfaces 
+	Comparable	has the compareTo() method
+				used to define the "natural" sort order of the class's objects
+	Comparator	has the compare() method 
+				used to override the natural sort order 
+					or provide a sort order for a class that doesn't have one
+
+Built-in functional interfaces 
+	find these in the java.util.function package
+
+	Name				method	arguments	return type 
+	---------------------------------------------------
+	Supplier <T>		get		none		T 
+	Consumer <T>		accept	T 			none 
+	Predicate <T>		test	T 			boolean
+	Function <T,R>		apply	T 			R 
+	UnaryOperator <T>	apply	T 			T 
+
+JVM thread monitoing tools 
+	jconsole	all JVMs
+	JvisualVM	Oracle (probably)
+	JMC			Oracle 
+	
+Modules
+	Modules are collections of packages
+	They sit within the application/project and the packages themselves
+	Normally IDEs give us one module per project 
+	The Java 8 class library had about 4,500 classes 
+	Java 9 split these up into modules 
+	By default, packages are private to the module they are in 
+	This allows us to:
+		create self contained JAR files that don't require all of the class library 
+			this could be useful when creating libraries
+		encapsulate internal packages 
+		detect missing modules when an application starts up 
+	Use jdeps to determine a module's dependencies
+	Use jlink to build a custom JRE 
+
+Module types 
+	system modules 
+		Java SE and JDK modules 
+		viewable using java --list-modules 
+	named 
+		module-info.java is in the root of their JAR files 
+		these are on the module path 
+	automatic 
+		when we place a module on the module path, the JVM converts it to a module at runtime
+		the packages in the module are automatically exported
+	unnamed 
+		when we add a class or a JAR file to the classpath, it becomes one of these 
+
+Annotation types 
+	1.	Compiler directives (pragma)
+			change the compiler's behaviour
+			@Override, @FunctionalInterface
+	2.	JavaDoc
+			identify keywords to the javadoc executable of the JDK
+			@see, @version, @author
+	3.	Runtime functionality
+			add extra conditions for the environment to take into account
+			@NotNull
+	4.	Code injection
+			instruct the environment running the application to add some functionality
+			@Test, @BeforeEach, @WebServlet, @Entity
+
+Annotations
+	Appeared in Java 5
+	Introduced in to Java Enterprise Edition to reduce the number and complexity of XML config. files
+	Annotations are metadata - they don't do anything on their own
+	They are read by the compiler, the JVM or other classes 
+	They are used extensively by frameworks
+	Java frameworks include Spring, Spring Boot, Hibernate, JEE, JUnit and more 
+	We often read annotations using reflection
+
+Reflection
+	ClassName.class gives us an object of Class<ClassName>
+		we can use this to query the class structure
+	referenceVariableName.getClass() also gives us an object of Class<? extends ClassName>
+		we can use this to modify the data in an object of the class 
+
+	
+
+
+
+
+
+
+
+
+try (ExecutorService service = Executors.newFixedThreadPool(3)) {
+            int max = 3;
+            for (int t = 0; t < 5; t++) {
+                int finalT = t;
+                service.execute(()  -> {
+                    for (int i = 0; i < max; i++) System.out.println("Hello "+ finalT +" " + i);
+                });
+                service.execute(() -> {
+                    for (int i = 0; i < max; i++) System.out.println("Goodbye "+ finalT + " " + i);
+                });
+            }
+        }
+ 
+ Memory mapping
+ https://docs.oracle.com/javase/8/docs/api/java/nio/MappedByteBuffer.html
+
