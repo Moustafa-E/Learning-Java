@@ -47,17 +47,24 @@ public class Main {
 
         int chunkSize = 2; // Chunk size in bits
         // binary numbers in java must begin with a prefix 0b<binary>. Long is 64 bits, Int is 32 bits, Short is 16, byte is 8
-        // Java only has signed binaries.
+        // Java & Natural only have signed binaries.
         // To store an unsigned 16bit value, you need 32 bits to start with (16bit value & 16bit mask of 1s). Once you're done, cast it back down to an int with (int) result.
         // You could also recast the type during initialisation
 
-        // Hexadecimal Masks. They're all read as -1 by java, but they're all a full set of 1s.
-        byte mask8   = (byte) 0xFF;
-        short mask16 = (short) 0xFFFF;
-        int mask32   = 0xFFFFFFFF;
-        long mask64  = 0xFFFFFFFFFFFFFFFFL;
+        // Wonderful. I actually don't need to split the binary string at all. It comes in an array of bytes.
+        // Since a byte is 8 bits, I'll just operate on byte chunks for now to generate a 16 bit checksum. Or I could just join two bytes and operate on them as if they were 16bit chunks.
 
-        System.out.println(mask64);
-
+        byte[] data = {0x48, 0x65, 0x6C, 0x6C, 0x6F}; // "Hello" in ASCII
+        // 5 bytes. Can work on two at once, then use an 8 bit mask on any chunk smaller chunk. Natural seems to have exclusively signed formats. So Casting up and down to store larger values should work the same.
+        // Need to assess array before working with it. If array size is even? We just join the two chunks into one 16 bit part and operate on that.
+        // If odd, we need to cast the last index to a short before working with it. Doesn't really make sense to have two loops based on the array size.
+        // Also probs don't need to strip the sign with a mask. Can work on them as they are.
     }
+    public static int fletcher32( byte[] data ) {
+        int A = 0xFF;
+        int B = 0xFF;
+
+        return (A * 65536 + B);
+    }
+
 }
